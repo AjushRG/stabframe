@@ -1,4 +1,4 @@
-# Photo Sharing App
+# StabFrame - A photo sharing app
 
 A web application built with the MERN stack, allowing users to share and view photos.
 
