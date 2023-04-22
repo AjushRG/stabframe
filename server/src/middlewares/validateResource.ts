@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AnyZodObject } from "zod";
+import log from "../utils/logger";
 
 const validate =
   (schema: AnyZodObject) =>
@@ -12,6 +13,7 @@ const validate =
       });
       next();
     } catch (err: any) {
+      log.error(err);
       res.status(400).send(err.errors);
     }
   };
