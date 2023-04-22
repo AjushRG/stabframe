@@ -438,7 +438,7 @@
     },
     {
       "key": "endpoint",
-      "value": "http://localhost:1337"
+      "value": "http://192.168.1.68:4000"
     },
     {
       "key": "productId",

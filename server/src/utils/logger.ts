@@ -18,7 +18,7 @@ const log = {
       message,
     });
   },
-  error: (message: string) => {
+  error: (message: any) => {
     logger.error({
       timestamp: dayjs().format(`YYYY-MM-DD HH:mm:ss`),
       level: "error",
