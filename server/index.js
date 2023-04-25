@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 
 // import utils
-import connectDB from "./src/utils/connect.js";
+import { connectDB } from "./src/utils/connect.js";
 import logger from "./src/utils/logger.js";
 
 // import routes

@@ -12,7 +12,15 @@ const stabSchema = new Schema(
       type: String,
       trim: true,
     },
-    image: {
+    stabNote: {
+      type: String,
+      trim: true,
+    },
+    goLink: {
+      type: String,
+      trim: true,
+    },
+    media: {
       type: String,
       required: true,
     },
