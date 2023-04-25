@@ -50,12 +50,12 @@ export const uploadMedia = async (mediaFile, name) => {
 };
 
 // Define a function for deleting an image from Cloudinary (commented out for now)
-// export const deleteImage = async (publicId) => {
-//   try {
-//     const deletedImage = await cloudinary.uploader.destroy(publicId);
-//     return deletedImage;
-//   } catch (error) {
-//     logger.error(error);
-//     throw error;
-//   }
-// };
+export const deleteMedia = async (publicId) => {
+  try {
+    const deletedMedia = await cloudinary.uploader.destroy(publicId);
+    return deletedMedia;
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+};

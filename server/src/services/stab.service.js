@@ -1,6 +1,7 @@
 import Stab from "../models/stab.model.js"; // Importing the Stab model
 import logger from "../utils/logger.js"; // Importing the logger utility
-import { uploadMedia } from "../middlewares/cloudinary.js"; // Importing the uploadMedia middleware
+import { uploadMedia, deleteMedia } from "../middlewares/cloudinary.js"; // Importing the uploadMedia middleware
+import mongoose from "mongoose";
 
 // Handler function for creating a new stab
 export const createStab = async (stab) => {
@@ -60,6 +61,8 @@ export const getStabById = async (id) => {
 // Handler function for updating a stab
 export const updateStab = async (id, stab) => {
   try {
+    const resMedia = uploadMedia(stab.media, stab.name); // Uploading the media file using the uploadMedia middleware
+
     const updatedStab = await Stab.findByIdAndUpdate(id, stab, {
       new: true,
     }); // Finding a stab by ID and updating it with the provided stab object, and returning the updated stab object with {new: true} option
@@ -74,7 +77,9 @@ export const updateStab = async (id, stab) => {
 // Handler function for deleting a stab
 export const deleteStab = async (id) => {
   try {
-    const deletedStab = await Stab.findByIdAndDelete(id); // Finding a stab by ID and deleting it from the database using the Stab model
+    const stabToDelete = await Stab.findById(id); // Finding a stab by ID and deleting it from the database using the Stab model
+    await deleteMedia(stabToDelete.name); // Deleting the media file from Cloudinary using the deleteMedia middleware
+    const deletedStab = await Stab.findByIdAndDelete(id); // Removing the deleted stab from the database
     return deletedStab; // Returning the deleted stab
   } catch (error) {
     // Handle the error here
