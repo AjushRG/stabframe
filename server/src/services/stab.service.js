@@ -47,3 +47,25 @@ export const getStabById = async (id) => {
     throw error;
   }
 };
+
+export const updateStab = async (id, stab) => {
+  try {
+    const updatedStab = await Stab.findByIdAndUpdate(id, stab, {
+      new: true,
+    });
+    return updatedStab;
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+};
+
+export const deleteStab = async (id) => {
+  try {
+    const deletedStab = await Stab.findByIdAndDelete(id);
+    return deletedStab;
+  } catch (error) {
+    logger.error(error);
+    throw error;
+  }
+};
